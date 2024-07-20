@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Quote</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+            margin: 0;
+        }
+
+        #quote-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #quote {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        #refresh-quote {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #refresh-quote:hover {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quote-container">
+        <h1>Quote of the Day</h1>
+        <p id="quote"></p>
+        <button id="refresh-quote">Refresh Quote</button>
+    </div>
+    <script>
+        const quotes = [
+            "The smaller the circle the better the people",
+            "If they weren't there when you were pushing the squad, why should they be there when you're collecting the loot",
+            "Just cause she treats you like a blue pum and looks like a gold scar doesn't mean there'll be a mythic around the corner",
+        ];
+
+        function getQuoteOfTheDay() {
+            const date = new Date();
+            const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+            const quoteIndex = dayOfYear % quotes.length;
+            return quotes[quoteIndex];
+        }
+
+        function getRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            return quotes[randomIndex];
+        }
+
+        function displayQuote(quote) {
+            const quoteElement = document.getElementById("quote");
+            quoteElement.textContent = quote;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            displayQuote(getQuoteOfTheDay());
+
+            const refreshButton = document.getElementById("refresh-quote");
+            refreshButton.addEventListener("click", () => {
+                displayQuote(getRandomQuote());
+            });
+        });
+    </script>
+</body>
+
+</html>
