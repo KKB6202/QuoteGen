@@ -43,6 +43,10 @@
         #refresh-quote:hover {
             background-color: darkorange;
         }
+
+        audio {
+            display: none;
+        }
     </style>
 </head>
 
@@ -51,6 +55,10 @@
         <h1>Quote of the Day</h1>
         <p id="quote"></p>
         <button id="refresh-quote">Refresh Quote</button>
+        <audio id="background-music" autoplay loop>
+            <source src="OMFG-Hello.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
     </div>
     <script>
         const quotes = [
